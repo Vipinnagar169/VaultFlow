@@ -1,0 +1,97 @@
+/* ============================================================
+   LEDGERPAY DESIGN TOKENS
+   ============================================================ */
+
+:root {
+  /* ── Brand Colors ── */
+  --primary:        #10B981;
+  --primary-dark:   #059669;
+  --primary-light:  #34D399;
+  --primary-muted:  rgba(16, 185, 129, 0.12);
+  --primary-glow:   rgba(16, 185, 129, 0.3);
+
+  /* ── Surface (Dark Mode) ── */
+  --bg:             #080E1A;
+  --surface-1:      #0F172A;
+  --surface-2:      #1E293B;
+  --surface-3:      #293548;
+  --surface-4:      #334155;
+
+  /* ── Text ── */
+  --text-1:         #F8FAFC;
+  --text-2:         #CBD5E1;
+  --text-3:         #94A3B8;
+  --text-4:         #64748B;
+
+  /* ── Border ── */
+  --border:         rgba(255, 255, 255, 0.07);
+  --border-strong:  rgba(255, 255, 255, 0.12);
+
+  /* ── Semantic ── */
+  --success:        #10B981;
+  --success-muted:  rgba(16, 185, 129, 0.12);
+  --warning:        #F59E0B;
+  --warning-muted:  rgba(245, 158, 11, 0.12);
+  --danger:         #EF4444;
+  --danger-muted:   rgba(239, 68, 68, 0.12);
+  --info:           #3B82F6;
+  --info-muted:     rgba(59, 130, 246, 0.12);
+
+  /* ── Typography ── */
+  --font-sans:      'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:      'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-xs:    0.75rem;    /* 12px */
+  --text-sm:    0.875rem;   /* 14px */
+  --text-base:  1rem;       /* 16px */
+  --text-lg:    1.125rem;   /* 18px */
+  --text-xl:    1.25rem;    /* 20px */
+  --text-2xl:   1.5rem;     /* 24px */
+  --text-3xl:   1.875rem;   /* 30px */
+  --text-4xl:   2.25rem;    /* 36px */
+  --text-5xl:   3rem;       /* 48px */
+
+  /* ── Spacing ── */
+  --sp-1:   0.25rem;   /* 4px  */
+  --sp-2:   0.5rem;    /* 8px  */
+  --sp-3:   0.75rem;   /* 12px */
+  --sp-4:   1rem;      /* 16px */
+  --sp-5:   1.25rem;   /* 20px */
+  --sp-6:   1.5rem;    /* 24px */
+  --sp-8:   2rem;      /* 32px */
+  --sp-10:  2.5rem;    /* 40px */
+  --sp-12:  3rem;      /* 48px */
+  --sp-16:  4rem;      /* 64px */
+  --sp-20:  5rem;      /* 80px */
+
+  /* ── Radius ── */
+  --radius-sm:   0.375rem;  /* 6px  */
+  --radius-md:   0.625rem;  /* 10px */
+  --radius-lg:   0.875rem;  /* 14px */
+  --radius-xl:   1.25rem;   /* 20px */
+  --radius-2xl:  1.5rem;    /* 24px */
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.4);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.5);
+  --shadow-glow: 0 0 24px var(--primary-glow);
+
+  /* ── Transitions ── */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:    cubic-bezier(0.4, 0, 1, 1);
+  --duration-fast:    120ms;
+  --duration-base:    200ms;
+  --duration-slow:    350ms;
+
+  /* ── Sidebar ── */
+  --sidebar-width: 260px;
+  --topbar-height: 64px;
+
+  /* ── Z-indices ── */
+  --z-sidebar:  100;
+  --z-topbar:   90;
+  --z-modal:    200;
+  --z-toast:    300;
+}
