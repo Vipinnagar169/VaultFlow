@@ -105,7 +105,7 @@
 ## 📁 Folder Structure
 
 ```
-Backend-Ledger/
+VaultFlow/
 ├── backend/
 │   ├── server.js                    # Entry point
 │   └── src/
@@ -169,7 +169,7 @@ Backend-Ledger/
 
 ```bash
 git clone https://github.com/Vipinnagar169/Ledger-Pay.git
-cd Ledger-Pay
+cd VaultFlow
 ```
 
 ---
