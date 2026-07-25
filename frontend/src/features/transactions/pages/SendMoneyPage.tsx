@@ -32,8 +32,8 @@ export function SendMoneyPage() {
   const [completedTx, setCompletedTx] = useState<Transaction | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Timer for 15s backend delay UX animation
-  const [countdown, setCountdown] = useState(15);
+  // Timer for 3s backend delay UX animation
+  const [countdown, setCountdown] = useState(3);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Set default fromAccount once loaded
@@ -53,7 +53,7 @@ export function SendMoneyPage() {
   // Handle countdown during PROCESSING
   useEffect(() => {
     if (step === 'PROCESSING') {
-      setCountdown(15);
+      setCountdown(3);
       timerRef.current = setInterval(() => {
         setCountdown((prev) => {
           if (prev <= 1) {

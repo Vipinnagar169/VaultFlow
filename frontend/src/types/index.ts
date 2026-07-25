@@ -1,4 +1,4 @@
-// Types for the LedgerPay application
+// Types for the VaultFlow application
 
 export interface User {
   _id: string;

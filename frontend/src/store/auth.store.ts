@@ -24,7 +24,7 @@ export const useAuthStore = create<AuthState>()(
         set({ user: null, token: null, isAuthenticated: false }),
     }),
     {
-      name: 'ledgerpay-auth',
+      name: 'vaultflow-auth',
       storage: createJSONStorage(() => sessionStorage), // sessionStorage = safer than localStorage
       partialize: (state) => ({
         user: state.user,

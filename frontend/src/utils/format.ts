@@ -1,4 +1,4 @@
-// Utility functions for LedgerPay
+// Utility functions for VaultFlow
 
 /**
  * Format a number as Indian Rupees currency

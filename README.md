@@ -168,7 +168,7 @@ VaultFlow/
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/Vipinnagar169/Ledger-Pay.git
+git clone https://github.com/Vipinnagar169/VaultFlow.git
 cd VaultFlow
 ```
 
@@ -281,7 +281,7 @@ MIT License — see [LICENSE](LICENSE) for details.
 **Vipin Nagar**  
 Full-Stack Developer · Node.js · React · MongoDB
 
-[![GitHub](https://img.shields.io/badge/GitHub-Vipinnagar169-181717?style=flat-square&logo=github)](https://github.com/Vipinnagar169/Ledger-Pay)
+[![GitHub](https://img.shields.io/badge/GitHub-Vipinnagar169-181717?style=flat-square&logo=github)](https://github.com/Vipinnagar169/VaultFlow)
 
 ---
 
