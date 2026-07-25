@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-import { Wallet, Plus, Send, Eye, EyeOff, ArrowUpRight, ArrowDownLeft, Shield, Clock } from 'lucide-react';
+import {
+  Wallet, Plus, Send, Eye, EyeOff, ArrowUpRight, ArrowDownLeft,
+  Shield, Clock, TrendingUp, Layers, ChevronRight
+} from 'lucide-react';
 import { accountService } from '../../../services/account.service';
 import { transactionService } from '../../../services/transaction.service';
 import { useAuthStore } from '../../../store/auth.store';
@@ -25,7 +28,14 @@ export function DashboardPage() {
 
   const primaryAccount = accounts?.[0];
 
-  // Fetch balance of primary account
+  // Fetch TOTAL balance across all accounts (new endpoint)
+  const { data: totalBalanceData, isLoading: totalBalanceLoading } = useQuery({
+    queryKey: ['total-balance'],
+    queryFn: accountService.getTotalBalance,
+    enabled: !!accounts && accounts.length > 0,
+  });
+
+  // Fetch balance of primary account (kept for primary card)
   const { data: balance = 0, isLoading: balanceLoading } = useQuery({
     queryKey: ['balance', primaryAccount?._id],
     queryFn: () => accountService.getBalance(primaryAccount!._id),
@@ -44,6 +54,7 @@ export function DashboardPage() {
     mutationFn: accountService.createAccount,
     onSuccess: (newAccount) => {
       queryClient.invalidateQueries({ queryKey: ['accounts'] });
+      queryClient.invalidateQueries({ queryKey: ['total-balance'] });
       toast.success(`New Bank Account created! ID: ${newAccount._id}`);
     },
     onError: (err: any) => {
@@ -51,13 +62,16 @@ export function DashboardPage() {
     },
   });
 
+  const totalBalance = totalBalanceData?.totalBalance ?? balance;
+  const accountCount = totalBalanceData?.accountCount ?? (primaryAccount ? 1 : 0);
+
   return (
     <div className={styles.container}>
       {/* Welcome Banner */}
       <div className={styles.welcomeBanner}>
         <div>
           <h1 className={styles.greeting}>Welcome back, {user?.name}</h1>
-          <p className={styles.subtext}>Double-entry ledger accounting system active & verified</p>
+          <p className={styles.subtext}>Double-entry ledger accounting system active &amp; verified</p>
         </div>
         {!primaryAccount && !accountsLoading && (
           <Button
@@ -70,6 +84,43 @@ export function DashboardPage() {
           </Button>
         )}
       </div>
+
+      {/* Portfolio Total Balance — NEW */}
+      {primaryAccount && (
+        <div className={styles.totalBalanceCard}>
+          <div className={styles.totalBalanceLeft}>
+            <div className={styles.totalBalanceIcon}>
+              <TrendingUp size={22} />
+            </div>
+            <div>
+              <span className={styles.totalBalanceLabel}>
+                <Layers size={13} style={{ display: 'inline', marginRight: 4 }} />
+                Total Portfolio Balance
+              </span>
+              {totalBalanceLoading ? (
+                <div className={styles.totalBalanceSkeleton} />
+              ) : (
+                <p className={styles.totalBalanceAmount}>
+                  {showBalance ? formatCurrency(totalBalance) : '₹ ••••••••'}
+                </p>
+              )}
+              <span className={styles.totalBalanceSub}>
+                Across {accountCount} ledger account{accountCount !== 1 ? 's' : ''} · Real-time aggregation
+              </span>
+            </div>
+          </div>
+          <div className={styles.totalBalanceRight}>
+            {totalBalanceData?.accounts.map((acc) => (
+              <div key={acc.accountId.toString()} className={styles.accBreakdownRow}>
+                <span className={styles.accBreakdownId}>{maskAccountId(acc.accountId.toString())}</span>
+                <span className={styles.accBreakdownBal}>
+                  {showBalance ? formatCurrency(acc.balance) : '₹ ••••'}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Main Grid */}
       <div className={styles.grid}>
@@ -160,6 +211,9 @@ export function DashboardPage() {
                   </div>
                 ))}
               </div>
+              <Link to="/accounts" className={styles.viewAllAccounts}>
+                Manage all accounts <ChevronRight size={14} />
+              </Link>
             </div>
           )}
         </div>

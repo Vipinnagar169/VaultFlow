@@ -14,6 +14,8 @@ const SendMoneyPage      = lazy(() => import('../features/transactions/pages/Sen
 const TransactionsPage   = lazy(() => import('../features/transactions/pages/TransactionsPage').then(m => ({ default: m.TransactionsPage })));
 const TransactionDetail  = lazy(() => import('../features/transactions/pages/TransactionDetailPage').then(m => ({ default: m.TransactionDetailPage })));
 const LedgerPage         = lazy(() => import('../features/accounts/pages/LedgerPage').then(m => ({ default: m.LedgerPage })));
+const AboutPage          = lazy(() => import('../features/about/pages/AboutPage').then(m => ({ default: m.AboutPage })));
+const FAQPage            = lazy(() => import('../features/faq/pages/FAQPage').then(m => ({ default: m.FAQPage })));
 
 function PageLoader() {
   return (
@@ -35,6 +37,15 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Suspense fallback={<PageLoader />}><RegisterPage /></Suspense>,
+  },
+  // Public informational pages (no auth required)
+  {
+    path: '/about',
+    element: <Suspense fallback={<PageLoader />}><AboutPage /></Suspense>,
+  },
+  {
+    path: '/faq',
+    element: <Suspense fallback={<PageLoader />}><FAQPage /></Suspense>,
   },
   {
     element: <ProtectedRoute />,

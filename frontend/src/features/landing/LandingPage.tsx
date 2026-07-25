@@ -12,9 +12,15 @@ export function LandingPage() {
           <div className={styles.logoIcon}>
             <Zap size={20} />
           </div>
-          <span>LedgerPay</span>
+          <span>VaultFlow</span>
         </div>
         <div className={styles.navActions}>
+          <Link to="/about">
+            <Button variant="ghost">About</Button>
+          </Link>
+          <Link to="/faq">
+            <Button variant="ghost">FAQ</Button>
+          </Link>
           <Link to="/login">
             <Button variant="ghost">Log In</Button>
           </Link>
@@ -73,7 +79,7 @@ export function LandingPage() {
 
       {/* Footer */}
       <footer className={styles.footer}>
-        <p>© 2026 LedgerPay Banking Systems. Powered by Node.js, Express & MongoDB Atlas.</p>
+        <p>© 2026 VaultFlow Banking Systems. Powered by Node.js, Express &amp; MongoDB Atlas.</p>
       </footer>
     </div>
   );

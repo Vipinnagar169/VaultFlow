@@ -49,7 +49,7 @@ export function LoginPage() {
           <div className={styles.logoBadge}>
             <Zap size={20} className="text-brand" />
           </div>
-          <h1 className={styles.title}>Welcome to LedgerPay</h1>
+          <h1 className={styles.title}>Welcome to VaultFlow</h1>
           <p className={styles.subtitle}>Enter your credentials to access your banking ledger</p>
         </div>
 

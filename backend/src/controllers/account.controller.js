@@ -103,9 +103,48 @@ async function getLedgerByAccount(req, res) {
     })
 }
 
+async function getTotalBalanceController(req, res) {
+    if (!req.user) {
+        return res.status(401).json({
+            message: "Unauthorized access"
+        })
+    }
+
+    const accounts = await accountModel.find({ user: req.user._id })
+
+    if (!accounts || accounts.length === 0) {
+        return res.status(200).json({
+            totalBalance: 0,
+            accountCount: 0,
+            accounts: []
+        })
+    }
+
+    const accountBalances = await Promise.all(
+        accounts.map(async (account) => {
+            const balance = await account.getBalance()
+            return {
+                accountId: account._id,
+                status: account.status,
+                currency: account.currency,
+                balance
+            }
+        })
+    )
+
+    const totalBalance = accountBalances.reduce((sum, acc) => sum + acc.balance, 0)
+
+    return res.status(200).json({
+        totalBalance,
+        accountCount: accounts.length,
+        accounts: accountBalances
+    })
+}
+
 module.exports = {
     createAccountController,
     getUserAccountController,
     getAccountBalanceController,
-    getLedgerByAccount
+    getLedgerByAccount,
+    getTotalBalanceController
 }

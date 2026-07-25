@@ -6,6 +6,7 @@ import {
   Send,
   LogOut,
   BookOpen,
+  Info,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import styles from './Sidebar.module.css';
@@ -20,6 +21,7 @@ const NAV_ITEMS = [
   { to: '/send', icon: Send, label: 'Send Money' },
   { to: '/transactions', icon: ArrowLeftRight, label: 'Transactions' },
   { to: '/ledger', icon: BookOpen, label: 'Ledger' },
+  { to: '/about', icon: Info, label: 'About' },
 ];
 
 export function Sidebar() {
@@ -47,7 +49,7 @@ export function Sidebar() {
             <path d="M2 8.5h20M6 16.5h4M2 5.5a2 2 0 012-2h16a2 2 0 012 2v13a2 2 0 01-2 2H4a2 2 0 01-2-2v-13z" />
           </svg>
         </div>
-        <span className={styles.logoText}>LedgerPay</span>
+        <span className={styles.logoText}>VaultFlow</span>
       </div>
 
       {/* Nav */}

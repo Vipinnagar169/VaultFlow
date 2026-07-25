@@ -1,5 +1,5 @@
 import { api } from '../lib/axios';
-import type { Account, LedgerListResponse } from '../types';
+import type { Account, LedgerListResponse, TotalBalanceResponse } from '../types';
 
 export const accountService = {
   async getAccounts(): Promise<Account[]> {
@@ -15,6 +15,11 @@ export const accountService = {
   async getBalance(accountId: string): Promise<number> {
     const res = await api.get<{ balance: number }>(`/api/accounts/balance/${accountId}`);
     return res.data.balance;
+  },
+
+  async getTotalBalance(): Promise<TotalBalanceResponse> {
+    const res = await api.get<TotalBalanceResponse>('/api/accounts/total-balance');
+    return res.data;
   },
 
   async getLedger(accountId: string, page = 1, limit = 30): Promise<LedgerListResponse> {

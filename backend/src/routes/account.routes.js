@@ -24,6 +24,13 @@ router.get("/", authMiddleware.authMiddleware, accountController.getUserAccountC
 
 
 /**
+ * - GET /api/accounts/total-balance
+ * - Get total aggregated balance across all user accounts
+ * - Protected Route
+ */
+router.get("/total-balance", authMiddleware.authMiddleware, accountController.getTotalBalanceController)
+
+/**
  * - GET /api/accounts/balance/:accountId
  */
 router.get("/balance/:accountId", authMiddleware.authMiddleware, accountController.getAccountBalanceController)

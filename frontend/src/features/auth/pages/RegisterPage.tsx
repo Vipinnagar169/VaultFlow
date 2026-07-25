@@ -36,7 +36,7 @@ export function RegisterPage() {
     try {
       const data = await authService.register({ name, email, password });
       setAuth(data.user, data.token);
-      toast.success('Account created successfully! Welcome to LedgerPay.');
+      toast.success('Account created successfully! Welcome to VaultFlow.');
       navigate('/dashboard');
     } catch (err) {
       const msg = getErrorMessage(err);
@@ -54,7 +54,7 @@ export function RegisterPage() {
           <div className={styles.logoBadge}>
             <Zap size={20} className="text-brand" />
           </div>
-          <h1 className={styles.title}>Create your LedgerPay Account</h1>
+          <h1 className={styles.title}>Create your VaultFlow Account</h1>
           <p className={styles.subtitle}>Open an account with immutable ledger security</p>
         </div>
 
