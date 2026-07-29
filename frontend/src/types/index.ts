@@ -64,3 +64,15 @@ export interface ApiError {
   status?: string;
 }
 
+export interface AccountBalanceEntry {
+  accountId: string;
+  status: 'ACTIVE' | 'FROZEN' | 'CLOSED';
+  currency: string;
+  balance: number;
+}
+
+export interface TotalBalanceResponse {
+  totalBalance: number;
+  accountCount: number;
+  accounts: AccountBalanceEntry[];
+}
