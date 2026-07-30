@@ -7,6 +7,34 @@
   padding: var(--sp-8) 0;
 }
 
+.topNav {
+  display: flex;
+  align-items: center;
+  margin-bottom: -2.5rem;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-3);
+  background: var(--surface-1);
+  border: 1px solid var(--border-strong);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.backBtn:hover {
+  color: var(--text-1);
+  background: var(--surface-2);
+  border-color: var(--primary);
+  transform: translateX(-3px);
+}
+
 /* ── Hero ── */
 .hero {
   text-align: center;

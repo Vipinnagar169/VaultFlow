@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ChevronDown, HelpCircle, ArrowRight } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ChevronDown, HelpCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 import styles from './FAQPage.module.css';
 
@@ -122,8 +122,15 @@ function AccordionItem({ q, a }: { q: string; a: string }) {
 }
 
 export function FAQPage() {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.page}>
+      <div className={styles.topNav}>
+        <button onClick={() => navigate(-1)} className={styles.backBtn}>
+          <ArrowLeft size={16} /> Back
+        </button>
+      </div>
 
       {/* Header */}
       <div className={styles.header}>

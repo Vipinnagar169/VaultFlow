@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   ShieldCheck, Zap, BookOpen, Lock, RefreshCw, BarChart3,
   Database, Server, Globe, ArrowRight, Users, Target,
-  Eye, Code2, TrendingUp, Mail
+  Eye, Code2, TrendingUp, Mail, ArrowLeft
 } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 import styles from './AboutPage.module.css';
@@ -59,8 +59,15 @@ const FUTURE = [
 ];
 
 export function AboutPage() {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.page}>
+      <div className={styles.topNav}>
+        <button onClick={() => navigate(-1)} className={styles.backBtn}>
+          <ArrowLeft size={16} /> Back
+        </button>
+      </div>
 
       {/* Hero */}
       <section className={styles.hero}>
@@ -83,7 +90,7 @@ export function AboutPage() {
                 Try Live Demo <ArrowRight size={18} />
               </Button>
             </Link>
-            <a href="https://github.com/Vipinnagar169/Ledger-Pay" target="_blank" rel="noreferrer">
+            <a href="https://github.com/Vipinnagar169/VaultFlow" target="_blank" rel="noreferrer">
               <Button variant="secondary" size="lg">
                 <Code2 size={18} /> View Source
               </Button>
@@ -244,7 +251,7 @@ export function AboutPage() {
               <a href="https://github.com/Vipinnagar169" target="_blank" rel="noreferrer" className={styles.devLink}>
                 <Code2 size={16} /> GitHub
               </a>
-              <a href="mailto:vipin@example.com" className={styles.devLink}>
+              <a href="mailto:nagarvipin59@gmail.com" className={styles.devLink}>
                 <Mail size={16} /> Contact
               </a>
             </div>
